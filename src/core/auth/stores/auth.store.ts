@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import { useHttpStore } from '@core/http/store/httpclient.store'
+import { useHttpStore } from '@core/http/stores/httpclient.store'
+import type { AuthDto } from '@core/http/dtos/AuthDto';
 
 export const useAuthStore = defineStore('auth', () => {
     const httpClient = useHttpStore();
@@ -12,10 +13,10 @@ export const useAuthStore = defineStore('auth', () => {
       token.value = localStorage.getItem('LANLink_user_token')
     }
 
-    async function login(): Promise<void> {
+    async function login(username: string, password: string): Promise<void> {
       try {
-        const data = await (await httpClient.post('/auth/login', { username: 'XXXXX', password: 'XXXXX' })).json();
-        if(data.token) {
+        const data = await httpClient.post<AuthDto>('/auth/login', { username, password });
+        if(data && data.token) {
           token.value = data.token
           localStorage.setItem('LANLink_user_token', data.token)
         }
@@ -27,6 +28,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     function logout() {
       token.value = null;
+      localStorage.removeItem('LANLink_user_token')
     }
 
     return { 
