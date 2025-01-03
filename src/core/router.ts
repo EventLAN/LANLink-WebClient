@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from 'vue-router'
-import { useAuthStore } from '@features/auth/stores/auth.store'
+import { useAuthStore } from '@core/auth/stores/auth.store'
 
 export const RouteNames = {
   LandingPage: 'LandingPage',
@@ -19,10 +19,10 @@ const routes = [
     path: '/', name: RouteNames.LandingPage, component: () => import('@features/LandingPage/components/LandingPage.vue') 
   },
   {
-    path: '/login', name: RouteNames.Login, component: () => import('@features/auth/components/Login.vue')
+    path: '/login', name: RouteNames.Login, component: () => import('@core/auth/components/Login.vue')
   },
   {
-    path: '/register', name: RouteNames.Register, component: () => import('@features/auth/components/Register.vue')
+    path: '/register', name: RouteNames.Register, component: () => import('@core/auth/components/Register.vue')
   },
   {
     path: '/dashboard', name: RouteNames.Dashboard.Base, component: () => import('@features/Dashboard/components/Dashboards.vue'),

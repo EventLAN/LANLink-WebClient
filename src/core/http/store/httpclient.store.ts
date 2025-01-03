@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { useAuthStore } from '../../auth/stores/auth.store';
+import { useAuthStore } from '@core/auth/stores/auth.store';
 
 export const useHttpStore = defineStore('http', () => {
     const authStore = useAuthStore();

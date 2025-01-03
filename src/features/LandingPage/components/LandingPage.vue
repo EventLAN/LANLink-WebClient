@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useAuthStore} from "@features/auth/stores/auth.store";
+import {useAuthStore} from "@core/auth/stores/auth.store";
 import {useRouter} from "vue-router";
 import {RouteNames} from "@core/router";
 

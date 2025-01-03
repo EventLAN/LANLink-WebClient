@@ -18,7 +18,13 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    
+    "baseUrl": "./",
+    "paths": {
+      "@features/*": ["src/features/*"],
+      "@core/*": ["src/core/*"],
+    }
   },
   "include": ["vite.config.ts"],
   "types": ["node"]
