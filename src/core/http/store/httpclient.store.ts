@@ -3,7 +3,7 @@ import { useAuthStore } from '../../auth/stores/auth.store';
 
 export const useHttpStore = defineStore('http', () => {
     const authStore = useAuthStore();
-    const baseUrl = 'XXXXXXXXXXXXXXXXXXXXX'
+    const baseUrl = import.meta.env.SERVER_BASE_URL
 
     function createHeaders(): Headers {
         var headers: Headers = new Headers({
